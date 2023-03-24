@@ -7,7 +7,12 @@
 
 import Foundation
 
-class AuthManager {
+protocol AuthManagerInterface {
+    func login(parameters:[String:Any],completion:@escaping(Result<AuthResponse,Error>)->Void)
+    func refreshToken(completion: ((Bool) -> Void)?)
+}
+
+final class AuthManager:AuthManagerInterface {
     
     static let shared = AuthManager()
     init() {}
@@ -70,6 +75,38 @@ class AuthManager {
 //        }.resume()
         
     }
+    
+    func refreshToken(completion: ((Bool) -> Void)?) {
+       guard !refreshingToken else { return }
+       guard shouldRefreshToken else {
+           completion?(true)
+           return
+       }
+       guard let refreshToken = self.refreshToken else { return }
+        
+        guard let request = createRequest(route: .login, method: .post, parameters: Constants.parameters) else {return}
+       refreshingToken = true
+
+      //Body Parameters of Refresh Access token.
+        URLSession.shared.dataTask(with:request) {  data, _, err in
+       self.refreshingToken = false
+       guard let data = data else {
+           completion?(false)
+           return
+       }
+       do {
+           let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+
+           self.saveToken(result: result)
+           completion?(true)
+       } catch {
+           print(err?.localizedDescription)
+           completion?(false)
+       }
+
+     }.resume()
+
+   }
     
     
     private func request<T:Codable>(route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {

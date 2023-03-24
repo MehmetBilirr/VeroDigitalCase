@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87429CE103500F97AB6 /* AppDelegate.swift */; };
 		F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */; };
-		F0ACE87929CE103500F97AB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87829CE103500F97AB6 /* ViewController.swift */; };
-		F0ACE87C29CE103500F97AB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0ACE87A29CE103500F97AB6 /* Main.storyboard */; };
+		F0ACE87929CE103500F97AB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87829CE103500F97AB6 /* LoginViewController.swift */; };
 		F0ACE87E29CE103600F97AB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ACE87D29CE103600F97AB6 /* Assets.xcassets */; };
 		F0ACE88129CE103600F97AB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0ACE87F29CE103600F97AB6 /* LaunchScreen.storyboard */; };
 		F0ACE88C29CE103600F97AB6 /* VeroDigitalStudyCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE88B29CE103600F97AB6 /* VeroDigitalStudyCaseTests.swift */; };
@@ -23,6 +22,12 @@
 		F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8B729CE174000F97AB6 /* Constants.swift */; };
 		F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */; };
 		F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */; };
+		F0ACE8C029CE518D00F97AB6 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8BF29CE518D00F97AB6 /* Token.swift */; };
+		F0ACE8C429CE57E300F97AB6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8C329CE57E300F97AB6 /* LoginViewModel.swift */; };
+		F0ACE8C729CE5BBC00F97AB6 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8C629CE5BBC00F97AB6 /* UILabel + Extension.swift */; };
+		F0ACE8C929CE5BDB00F97AB6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8C829CE5BDB00F97AB6 /* UIView + Extension.swift */; };
+		F0ACE8CB29CE5C0100F97AB6 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */; };
+		F0ACE8CE29CE5D1500F97AB6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F0ACE8CD29CE5D1500F97AB6 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +51,7 @@
 		F0ACE87129CE103500F97AB6 /* VeroDigitalStudyCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeroDigitalStudyCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACE87429CE103500F97AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F0ACE87829CE103500F97AB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F0ACE87B29CE103500F97AB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0ACE87829CE103500F97AB6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F0ACE87D29CE103600F97AB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0ACE88029CE103600F97AB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0ACE88229CE103600F97AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +67,11 @@
 		F0ACE8B729CE174000F97AB6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		F0ACE8BF29CE518D00F97AB6 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		F0ACE8C329CE57E300F97AB6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F0ACE8C629CE5BBC00F97AB6 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		F0ACE8C829CE5BDB00F97AB6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0ACE8CE29CE5D1500F97AB6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,14 +123,13 @@
 		F0ACE87329CE103500F97AB6 /* VeroDigitalStudyCase */ = {
 			isa = PBXGroup;
 			children = (
+				F0ACE8C129CE53D300F97AB6 /* Screens */,
 				F0ACE8BC29CE1FF500F97AB6 /* Models */,
 				F0ACE8B929CE1D2C00F97AB6 /* Extension */,
 				F0ACE8A729CE136500F97AB6 /* Helper */,
 				F0ACE8A429CE130D00F97AB6 /* Managers */,
 				F0ACE87429CE103500F97AB6 /* AppDelegate.swift */,
 				F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */,
-				F0ACE87829CE103500F97AB6 /* ViewController.swift */,
-				F0ACE87A29CE103500F97AB6 /* Main.storyboard */,
 				F0ACE87D29CE103600F97AB6 /* Assets.xcassets */,
 				F0ACE87F29CE103600F97AB6 /* LaunchScreen.storyboard */,
 				F0ACE88229CE103600F97AB6 /* Info.plist */,
@@ -167,6 +176,7 @@
 		F0ACE8B929CE1D2C00F97AB6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F0ACE8C529CE5A8600F97AB6 /* UIKit */,
 				F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */,
 			);
 			path = Extension;
@@ -176,8 +186,36 @@
 			isa = PBXGroup;
 			children = (
 				F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */,
+				F0ACE8BF29CE518D00F97AB6 /* Token.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F0ACE8C129CE53D300F97AB6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8C229CE53D900F97AB6 /* Login */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F0ACE8C229CE53D900F97AB6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE87829CE103500F97AB6 /* LoginViewController.swift */,
+				F0ACE8C329CE57E300F97AB6 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F0ACE8C529CE5A8600F97AB6 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8C629CE5BBC00F97AB6 /* UILabel + Extension.swift */,
+				F0ACE8C829CE5BDB00F97AB6 /* UIView + Extension.swift */,
+				F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +234,9 @@
 			dependencies = (
 			);
 			name = VeroDigitalStudyCase;
+			packageProductDependencies = (
+				F0ACE8CD29CE5D1500F97AB6 /* SnapKit */,
+			);
 			productName = VeroDigitalStudyCase;
 			productReference = F0ACE87129CE103500F97AB6 /* VeroDigitalStudyCase.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +309,9 @@
 				Base,
 			);
 			mainGroup = F0ACE86829CE103500F97AB6;
+			packageReferences = (
+				F0ACE8CC29CE5D1500F97AB6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F0ACE87229CE103500F97AB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,7 +330,6 @@
 			files = (
 				F0ACE88129CE103600F97AB6 /* LaunchScreen.storyboard in Resources */,
 				F0ACE87E29CE103600F97AB6 /* Assets.xcassets in Resources */,
-				F0ACE87C29CE103500F97AB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +354,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0ACE87929CE103500F97AB6 /* ViewController.swift in Sources */,
+				F0ACE87929CE103500F97AB6 /* LoginViewController.swift in Sources */,
 				F0ACE8A629CE132100F97AB6 /* AuthManager.swift in Sources */,
 				F0ACE8B129CE13B900F97AB6 /* AppError.swift in Sources */,
 				F0ACE8B329CE13EF00F97AB6 /* Route.swift in Sources */,
+				F0ACE8C929CE5BDB00F97AB6 /* UIView + Extension.swift in Sources */,
+				F0ACE8CB29CE5C0100F97AB6 /* UIButton + Extension.swift in Sources */,
 				F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */,
 				F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */,
 				F0ACE8B629CE172B00F97AB6 /* Method.swift in Sources */,
+				F0ACE8C029CE518D00F97AB6 /* Token.swift in Sources */,
+				F0ACE8C429CE57E300F97AB6 /* LoginViewModel.swift in Sources */,
 				F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */,
+				F0ACE8C729CE5BBC00F97AB6 /* UILabel + Extension.swift in Sources */,
 				F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */,
 				F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */,
 			);
@@ -357,14 +405,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F0ACE87A29CE103500F97AB6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0ACE87B29CE103500F97AB6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F0ACE87F29CE103600F97AB6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -502,7 +542,6 @@
 				INFOPLIST_FILE = VeroDigitalStudyCase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -530,7 +569,6 @@
 				INFOPLIST_FILE = VeroDigitalStudyCase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0ACE8CC29CE5D1500F97AB6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0ACE8CD29CE5D1500F97AB6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0ACE8CC29CE5D1500F97AB6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F0ACE86929CE103500F97AB6 /* Project object */;
 }
