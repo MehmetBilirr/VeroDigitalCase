@@ -11,7 +11,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        AuthManager.shared.login(parameters: Constants.parameters) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                AuthManager.shared.saveToken(result: success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+        
     }
 
 

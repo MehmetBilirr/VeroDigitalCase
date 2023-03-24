@@ -16,6 +16,13 @@
 		F0ACE88C29CE103600F97AB6 /* VeroDigitalStudyCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE88B29CE103600F97AB6 /* VeroDigitalStudyCaseTests.swift */; };
 		F0ACE89629CE103600F97AB6 /* VeroDigitalStudyCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE89529CE103600F97AB6 /* VeroDigitalStudyCaseUITests.swift */; };
 		F0ACE89829CE103600F97AB6 /* VeroDigitalStudyCaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE89729CE103600F97AB6 /* VeroDigitalStudyCaseUITestsLaunchTests.swift */; };
+		F0ACE8A629CE132100F97AB6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8A529CE132100F97AB6 /* AuthManager.swift */; };
+		F0ACE8B129CE13B900F97AB6 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8B029CE13B900F97AB6 /* AppError.swift */; };
+		F0ACE8B329CE13EF00F97AB6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8B229CE13EF00F97AB6 /* Route.swift */; };
+		F0ACE8B629CE172B00F97AB6 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8B529CE172B00F97AB6 /* Method.swift */; };
+		F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8B729CE174000F97AB6 /* Constants.swift */; };
+		F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */; };
+		F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		F0ACE89129CE103600F97AB6 /* VeroDigitalStudyCaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeroDigitalStudyCaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACE89529CE103600F97AB6 /* VeroDigitalStudyCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeroDigitalStudyCaseUITests.swift; sourceTree = "<group>"; };
 		F0ACE89729CE103600F97AB6 /* VeroDigitalStudyCaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeroDigitalStudyCaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F0ACE8A529CE132100F97AB6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		F0ACE8B029CE13B900F97AB6 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		F0ACE8B229CE13EF00F97AB6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		F0ACE8B529CE172B00F97AB6 /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		F0ACE8B729CE174000F97AB6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,10 @@
 		F0ACE87329CE103500F97AB6 /* VeroDigitalStudyCase */ = {
 			isa = PBXGroup;
 			children = (
+				F0ACE8BC29CE1FF500F97AB6 /* Models */,
+				F0ACE8B929CE1D2C00F97AB6 /* Extension */,
+				F0ACE8A729CE136500F97AB6 /* Helper */,
+				F0ACE8A429CE130D00F97AB6 /* Managers */,
 				F0ACE87429CE103500F97AB6 /* AppDelegate.swift */,
 				F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */,
 				F0ACE87829CE103500F97AB6 /* ViewController.swift */,
@@ -125,6 +143,41 @@
 				F0ACE89729CE103600F97AB6 /* VeroDigitalStudyCaseUITestsLaunchTests.swift */,
 			);
 			path = VeroDigitalStudyCaseUITests;
+			sourceTree = "<group>";
+		};
+		F0ACE8A429CE130D00F97AB6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8A529CE132100F97AB6 /* AuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F0ACE8A729CE136500F97AB6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8B029CE13B900F97AB6 /* AppError.swift */,
+				F0ACE8B229CE13EF00F97AB6 /* Route.swift */,
+				F0ACE8B529CE172B00F97AB6 /* Method.swift */,
+				F0ACE8B729CE174000F97AB6 /* Constants.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F0ACE8B929CE1D2C00F97AB6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F0ACE8BC29CE1FF500F97AB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0ACE87929CE103500F97AB6 /* ViewController.swift in Sources */,
+				F0ACE8A629CE132100F97AB6 /* AuthManager.swift in Sources */,
+				F0ACE8B129CE13B900F97AB6 /* AppError.swift in Sources */,
+				F0ACE8B329CE13EF00F97AB6 /* Route.swift in Sources */,
 				F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */,
+				F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */,
+				F0ACE8B629CE172B00F97AB6 /* Method.swift in Sources */,
 				F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */,
+				F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */,
+				F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
