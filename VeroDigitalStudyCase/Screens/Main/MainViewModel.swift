@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ProgressHUD
 
 protocol MainViewModelInterface:AnyObject {
     var view:MainViewInterface?{get set}
@@ -36,6 +37,7 @@ extension MainViewModel:MainViewModelInterface {
         view?.setupUI()
         view?.configureTableView()
         view?.getData()
+        view?.configureRefreshControl()
     }
     
     func getData() {
@@ -47,17 +49,17 @@ extension MainViewModel:MainViewModelInterface {
                 UserDefaults.standard.saveModeltoCache(tasks)
                 self.view?.reloadData()
             case .failure(let error):
-                print(print(error.localizedDescription))
+                ProgressHUD.showFailed(error.localizedDescription)
             }
         })
     }
     
     func numberOfRowsInSection() -> Int {
-        tasks?.count ?? 0
+        UserDefaults.standard.getCacheModels()?.count ?? 0
     }
     
     func cellForRowAt(indexPath: IndexPath) -> TaskResponse {
-        guard let tasks = tasks else {return .init(task: "", title: "", description: "", colorCode: "")}
+        guard let tasks = UserDefaults.standard.getCacheModels() else {return .init(task: "", title: "", description: "", colorCode: "")}
         return tasks[indexPath.row]
     }
 }

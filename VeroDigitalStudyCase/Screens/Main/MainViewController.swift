@@ -12,10 +12,12 @@ protocol MainViewInterface:AnyObject {
     func setupUI()
     func getData()
     func reloadData()
+    func configureRefreshControl()
 }
 
 class MainViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
     private lazy var viewModel = MainViewModel(view: self)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,7 @@ class MainViewController: UIViewController {
     }
 
 
+    
 }
 
 extension MainViewController: MainViewInterface {
@@ -43,6 +46,7 @@ extension MainViewController: MainViewInterface {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 100
+        tableView.refreshControl = refreshControl
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
     }
     
@@ -52,6 +56,17 @@ extension MainViewController: MainViewInterface {
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func configureRefreshControl(){
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        
+        viewModel.getData()
+        refreshControl.endRefreshing()
     }
     
 }

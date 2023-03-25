@@ -30,6 +30,7 @@ extension LoginViewModel:LoginViewModelInterface {
     func viewDidLoad() {
         view?.layoutUI()
         view?.styleUI()
+        
     }
     
     func login(userName: String, password: String) {
