@@ -9,13 +9,13 @@ import Foundation
 
 protocol LoginViewModelInterface:AnyObject {
     var view:LoginViewInterface?{get set}
-    
     func viewDidLoad()
+    func login(userName:String,password:String)
 }
 
 
 class LoginViewModel {
-    var view:LoginViewInterface?
+    weak var view:LoginViewInterface?
     private let authManager : AuthManager?
     
     init(view:LoginViewInterface,authManager:AuthManager=AuthManager.shared) {
@@ -28,11 +28,25 @@ class LoginViewModel {
 extension LoginViewModel:LoginViewModelInterface {
     
     func viewDidLoad() {
-        view?.layout()
-        view?.style()
+        view?.layoutUI()
+        view?.styleUI()
     }
     
-    
+    func login(userName: String, password: String) {
+        
+        let parameters = ["username": userName,"password": password] as [String : Any]
+        
+        authManager?.login(parameters: parameters, completion: { result in
+            switch result {
+            case .success(let authResponse):
+                self.authManager?.saveToken(result: authResponse)
+                self.view?.pushToMainVC()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+        
+    }
     
     
 }

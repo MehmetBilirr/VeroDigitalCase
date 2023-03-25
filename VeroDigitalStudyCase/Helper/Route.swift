@@ -15,7 +15,6 @@ enum Route {
   
   var description:String {
     switch self {
-        
     case.login:
         return "/index.php/login"
     case.getData:

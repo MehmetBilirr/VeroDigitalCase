@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 extension UIButton {
-  func configureStyleTitleButton(title:String,titleColor:UIColor,backgroundClr:UIColor?=nil,cornerRds:CGFloat?=nil) {
+  func configureStyleTitleButton(title:String,titleColor:UIColor,backgroundClr:UIColor,cornerRds:CGFloat) {
     translatesAutoresizingMaskIntoConstraints = false
     setTitle(title, for: .normal)
     setTitleColor(titleColor, for: .normal)

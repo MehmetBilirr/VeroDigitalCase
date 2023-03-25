@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F036CC0829CF235000282206 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC0729CF235000282206 /* TaskResponse.swift */; };
+		F036CC0A29CF24E000282206 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC0929CF24E000282206 /* WebService.swift */; };
+		F036CC0C29CF317C00282206 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC0B29CF317C00282206 /* MainViewModel.swift */; };
+		F036CC1029CF333400282206 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC0F29CF333400282206 /* MainTableViewCell.swift */; };
+		F036CC1229CF35D000282206 /* TableViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC1129CF35D000282206 /* TableViewCell + Extension.swift */; };
+		F036CC1429CF3F7500282206 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC1329CF3F7500282206 /* UIColor + Extension.swift */; };
+		F036CC1629CF40B800282206 /* UserDefaults + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */; };
 		F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87429CE103500F97AB6 /* AppDelegate.swift */; };
 		F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */; };
 		F0ACE87929CE103500F97AB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87829CE103500F97AB6 /* LoginViewController.swift */; };
@@ -28,6 +35,9 @@
 		F0ACE8C929CE5BDB00F97AB6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8C829CE5BDB00F97AB6 /* UIView + Extension.swift */; };
 		F0ACE8CB29CE5C0100F97AB6 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */; };
 		F0ACE8CE29CE5D1500F97AB6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F0ACE8CD29CE5D1500F97AB6 /* SnapKit */; };
+		F0C7D83F29CE731600ABB1F9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7D83E29CE731600ABB1F9 /* MainViewController.swift */; };
+		F0C7D84129CE784400ABB1F9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7D84029CE784400ABB1F9 /* APIManager.swift */; };
+		F0C7D84329CE7ABA00ABB1F9 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7D84229CE7ABA00ABB1F9 /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F036CC0729CF235000282206 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
+		F036CC0929CF24E000282206 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		F036CC0B29CF317C00282206 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F036CC0F29CF333400282206 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		F036CC1129CF35D000282206 /* TableViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + Extension.swift"; sourceTree = "<group>"; };
+		F036CC1329CF3F7500282206 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + Extension.swift"; sourceTree = "<group>"; };
 		F0ACE87129CE103500F97AB6 /* VeroDigitalStudyCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeroDigitalStudyCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACE87429CE103500F97AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +89,9 @@
 		F0ACE8C629CE5BBC00F97AB6 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		F0ACE8C829CE5BDB00F97AB6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		F0C7D83E29CE731600ABB1F9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F0C7D84029CE784400ABB1F9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F0C7D84229CE7ABA00ABB1F9 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +120,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F036CC0D29CF330F00282206 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F036CC0E29CF331A00282206 /* MainTableViewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F036CC0E29CF331A00282206 /* MainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F036CC0F29CF333400282206 /* MainTableViewCell.swift */,
+			);
+			path = MainTableViewCell;
+			sourceTree = "<group>";
+		};
 		F0ACE86829CE103500F97AB6 = {
 			isa = PBXGroup;
 			children = (
@@ -123,11 +159,12 @@
 		F0ACE87329CE103500F97AB6 /* VeroDigitalStudyCase */ = {
 			isa = PBXGroup;
 			children = (
-				F0ACE8C129CE53D300F97AB6 /* Screens */,
-				F0ACE8BC29CE1FF500F97AB6 /* Models */,
-				F0ACE8B929CE1D2C00F97AB6 /* Extension */,
-				F0ACE8A729CE136500F97AB6 /* Helper */,
 				F0ACE8A429CE130D00F97AB6 /* Managers */,
+				F0ACE8BC29CE1FF500F97AB6 /* Models */,
+				F0ACE8C129CE53D300F97AB6 /* Screens */,
+				F036CC0D29CF330F00282206 /* Views */,
+				F0ACE8A729CE136500F97AB6 /* Helper */,
+				F0ACE8B929CE1D2C00F97AB6 /* Extension */,
 				F0ACE87429CE103500F97AB6 /* AppDelegate.swift */,
 				F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */,
 				F0ACE87D29CE103600F97AB6 /* Assets.xcassets */,
@@ -158,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				F0ACE8A529CE132100F97AB6 /* AuthManager.swift */,
+				F0C7D84029CE784400ABB1F9 /* APIManager.swift */,
+				F036CC0929CF24E000282206 /* WebService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -178,6 +217,9 @@
 			children = (
 				F0ACE8C529CE5A8600F97AB6 /* UIKit */,
 				F0ACE8BA29CE1D3800F97AB6 /* String + Extension.swift */,
+				F036CC1129CF35D000282206 /* TableViewCell + Extension.swift */,
+				F036CC1329CF3F7500282206 /* UIColor + Extension.swift */,
+				F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -187,6 +229,8 @@
 			children = (
 				F0ACE8BD29CE200000F97AB6 /* AuthResponse.swift */,
 				F0ACE8BF29CE518D00F97AB6 /* Token.swift */,
+				F0C7D84229CE7ABA00ABB1F9 /* ErrorResponse.swift */,
+				F036CC0729CF235000282206 /* TaskResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,6 +238,7 @@
 		F0ACE8C129CE53D300F97AB6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F0C7D83D29CE72F700ABB1F9 /* Main */,
 				F0ACE8C229CE53D900F97AB6 /* Login */,
 			);
 			path = Screens;
@@ -216,6 +261,15 @@
 				F0ACE8CA29CE5C0100F97AB6 /* UIButton + Extension.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		F0C7D83D29CE72F700ABB1F9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F0C7D83E29CE731600ABB1F9 /* MainViewController.swift */,
+				F036CC0B29CF317C00282206 /* MainViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,20 +408,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F036CC1029CF333400282206 /* MainTableViewCell.swift in Sources */,
 				F0ACE87929CE103500F97AB6 /* LoginViewController.swift in Sources */,
 				F0ACE8A629CE132100F97AB6 /* AuthManager.swift in Sources */,
 				F0ACE8B129CE13B900F97AB6 /* AppError.swift in Sources */,
 				F0ACE8B329CE13EF00F97AB6 /* Route.swift in Sources */,
 				F0ACE8C929CE5BDB00F97AB6 /* UIView + Extension.swift in Sources */,
 				F0ACE8CB29CE5C0100F97AB6 /* UIButton + Extension.swift in Sources */,
+				F036CC0829CF235000282206 /* TaskResponse.swift in Sources */,
 				F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */,
+				F0C7D83F29CE731600ABB1F9 /* MainViewController.swift in Sources */,
 				F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */,
 				F0ACE8B629CE172B00F97AB6 /* Method.swift in Sources */,
 				F0ACE8C029CE518D00F97AB6 /* Token.swift in Sources */,
 				F0ACE8C429CE57E300F97AB6 /* LoginViewModel.swift in Sources */,
+				F0C7D84129CE784400ABB1F9 /* APIManager.swift in Sources */,
+				F036CC0C29CF317C00282206 /* MainViewModel.swift in Sources */,
 				F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */,
+				F036CC1429CF3F7500282206 /* UIColor + Extension.swift in Sources */,
 				F0ACE8C729CE5BBC00F97AB6 /* UILabel + Extension.swift in Sources */,
+				F0C7D84329CE7ABA00ABB1F9 /* ErrorResponse.swift in Sources */,
+				F036CC1229CF35D000282206 /* TableViewCell + Extension.swift in Sources */,
 				F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */,
+				F036CC0A29CF24E000282206 /* WebService.swift in Sources */,
+				F036CC1629CF40B800282206 /* UserDefaults + Extension.swift in Sources */,
 				F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

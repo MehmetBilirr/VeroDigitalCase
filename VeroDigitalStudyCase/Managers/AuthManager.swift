@@ -15,6 +15,7 @@ protocol AuthManagerInterface {
 final class AuthManager:AuthManagerInterface {
     
     static let shared = AuthManager()
+    let webService = WebService()
     init() {}
     private var refreshingToken = false
     var isSignedIn:Bool {
@@ -43,36 +44,16 @@ final class AuthManager:AuthManagerInterface {
     
     
     func login(parameters:[String:Any],completion:@escaping(Result<AuthResponse,Error>)->Void){
-        let parameters = [
-          "username": "365",
-          "password": "1"
-        ]
+  
+        guard let request = createRequest(route: .login, method: .post, parameters: parameters) else {
+            
+            completion(.failure(AppError.unknownError))
+            
+            return
+            }
         
-        request(route: .login, method: .post, parameters: parameters, completion: completion)
+        webService.request(request: request, route: .login, method: .post, parameters: parameters, completion: completion)
     
-//        guard let request = createRequest(route: .login, method: .post, parameters: parameters) else {return}
-//        URLSession.shared.dataTask(with:request ) { data, response, error in
-//
-//            var result: Result<Data,Error>?
-//            if let data = data {
-//                result = .success(data)
-//                let responseString = String(data:data, encoding: .utf8) ?? "Could not stringify our data"
-//                print("The response is :\n \(responseString)")
-//
-//
-//            }else if let error = error {
-//                result = .failure(error)
-//                print("The error is : \(error.localizedDescription)")
-//            }
-//
-//
-//            DispatchQueue.main.async {
-//
-//                // TODO decode our result and send back to the user
-//                self.handleResponse(result: result, completion: completion)
-//
-//            }
-//        }.resume()
         
     }
     
@@ -107,65 +88,6 @@ final class AuthManager:AuthManagerInterface {
      }.resume()
 
    }
-    
-    
-    private func request<T:Codable>(route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
-        
-        guard let request = createRequest(route: route, method: method, parameters: parameters) else {
-            
-            completion(.failure(AppError.unknownError))
-            
-            return
-            }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            var result: Result<Data,Error>?
-            if let data = data {
-                result = .success(data)
-                let responseString = String(data:data, encoding: .utf8) ?? "Could not stringify our data"
-                print("The response is :\n \(responseString)")
-                
-                
-            }else if let error = error {
-                result = .failure(error)
-                print("The error is : \(error.localizedDescription)")
-            }
-            
-            
-            DispatchQueue.main.async {
-                
-                // TODO decode our result and send back to the user
-                self.handleResponse(result: result, completion: completion)
-                
-            }
-        }.resume()
-        
-        }
-    
-    private func handleResponse<T:Codable>(result:Result<Data,Error>?,completion: (Result<T,Error>) -> Void){
-        
-        
-        guard let result = result else {
-          completion(.failure(AppError.unknownError))
-          return}
-        
-        switch result {
-
-        case .success(let data):
-
-          let decoder = JSONDecoder()
-          guard let response = try? decoder.decode(T.self, from: data) else {
-            completion(.failure(AppError.errorDecoding))
-            return
-          }
-          completion(.success(response))
-        case .failure(let error):
-          completion(.failure(error))
-        }
-
-    }
-    
     
     
     private func createRequest (route: Route, method: Method, parameters:[String:Any]?) -> URLRequest? {

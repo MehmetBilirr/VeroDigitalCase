@@ -1,0 +1,67 @@
+//
+//  MainTableViewCell.swift
+//  VeroDigitalStudyCase
+//
+//  Created by Mehmet Bilir on 25.03.2023.
+//
+
+import UIKit
+import SnapKit
+
+class MainTableViewCell: UITableViewCell {
+    private let taskLbl = UILabel()
+    private let titleLbl = UILabel()
+    private let descriptionLbl = UILabel()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        styleUI()
+        layoutUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func styleUI(){
+        
+        taskLbl.configureStyle(size: 12, weight: .regular, color: .black)
+        taskLbl.text = "asdasdasd"
+        titleLbl.configureStyle(size: 20, weight: .bold, color: .black)
+        titleLbl.text = "adsasdasd"
+        descriptionLbl.configureStyle(size: 12, weight: .thin, color: .black)
+        descriptionLbl.text = "asdadasd"
+        
+    }
+    
+    private func layoutUI(){
+        contentView.addSubview(titleLbl)
+        
+        titleLbl.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(5)
+        }
+        
+        contentView.addSubview(taskLbl)
+        
+        taskLbl.snp.makeConstraints { make in
+            make.left.equalTo(titleLbl.snp.left)
+            make.top.equalTo(titleLbl.snp.bottom).offset(5)
+        }
+        
+        contentView.addSubview(descriptionLbl)
+        
+        descriptionLbl.snp.makeConstraints { make in
+            make.left.equalTo(titleLbl.snp.left)
+            make.top.equalTo(taskLbl.snp.bottom).offset(5)
+          
+        }
+    }
+    
+    func setup(task:TaskResponse){
+        
+        titleLbl.text = task.title
+        taskLbl.text = task.task
+        descriptionLbl.text = task.description
+        backgroundColor = UIColor.init(hexString: task.colorCode)
+    }
+}
