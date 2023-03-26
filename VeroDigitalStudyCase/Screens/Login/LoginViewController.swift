@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.viewDidLoad()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
        
     }
  
@@ -109,9 +111,15 @@ extension LoginViewController:LoginViewInterface {
     }
     
     func pushToMainVC() {
-        navigationController?.pushViewController(MainViewController(), animated: true)
+        let viewController = MainViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(MainViewController(), animated: true)
+        
     }
     
+    @objc func didTapToDismiss(){
+        view.endEditing(true)
+    }
 }
 
 extension LoginViewController:UITextFieldDelegate {

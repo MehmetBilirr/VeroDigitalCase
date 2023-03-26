@@ -7,16 +7,18 @@
 
 import Foundation
 
+protocol APIManagerInterface {
+    func getData(completion:@escaping(Result<[TaskResponse],Error>) -> Void)
+}
 
-class APIManager {
+class APIManager:APIManagerInterface {
     
     static let shared = APIManager()
-    private let webService = WebService()
     init(){}
     
     
     func getData(completion:@escaping(Result<[TaskResponse],Error>) -> Void){
-        webService.request(route: .getData, method: .get, parameters: nil, completion: completion)
+        WebService.shared.request(route: .getData, method: .get, parameters: nil, completion: completion)
         
     }
     

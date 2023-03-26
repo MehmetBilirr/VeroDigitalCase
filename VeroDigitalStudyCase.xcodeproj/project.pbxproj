@@ -15,6 +15,8 @@
 		F036CC1429CF3F7500282206 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC1329CF3F7500282206 /* UIColor + Extension.swift */; };
 		F036CC1629CF40B800282206 /* UserDefaults + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */; };
 		F036CC1929CF498C00282206 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = F036CC1829CF498C00282206 /* ProgressHUD */; };
+		F0853C2629D088A600F3364A /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0853C2529D088A600F3364A /* QRViewController.swift */; };
+		F0853C2829D091DC00F3364A /* NotificationCenter + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0853C2729D091DC00F3364A /* NotificationCenter + Extension.swift */; };
 		F0ACE87529CE103500F97AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87429CE103500F97AB6 /* AppDelegate.swift */; };
 		F0ACE87729CE103500F97AB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */; };
 		F0ACE87929CE103500F97AB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACE87829CE103500F97AB6 /* LoginViewController.swift */; };
@@ -66,6 +68,8 @@
 		F036CC1129CF35D000282206 /* TableViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + Extension.swift"; sourceTree = "<group>"; };
 		F036CC1329CF3F7500282206 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + Extension.swift"; sourceTree = "<group>"; };
+		F0853C2529D088A600F3364A /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		F0853C2729D091DC00F3364A /* NotificationCenter + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter + Extension.swift"; sourceTree = "<group>"; };
 		F0ACE87129CE103500F97AB6 /* VeroDigitalStudyCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeroDigitalStudyCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACE87429CE103500F97AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0ACE87629CE103500F97AB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,14 @@
 				F036CC0F29CF333400282206 /* MainTableViewCell.swift */,
 			);
 			path = MainTableViewCell;
+			sourceTree = "<group>";
+		};
+		F0853C2429D0887B00F3364A /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				F0853C2529D088A600F3364A /* QRViewController.swift */,
+			);
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 		F0ACE86829CE103500F97AB6 = {
@@ -222,6 +234,7 @@
 				F036CC1129CF35D000282206 /* TableViewCell + Extension.swift */,
 				F036CC1329CF3F7500282206 /* UIColor + Extension.swift */,
 				F036CC1529CF40B800282206 /* UserDefaults + Extension.swift */,
+				F0853C2729D091DC00F3364A /* NotificationCenter + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -240,6 +253,7 @@
 		F0ACE8C129CE53D300F97AB6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F0853C2429D0887B00F3364A /* QRCode */,
 				F0C7D83D29CE72F700ABB1F9 /* Main */,
 				F0ACE8C229CE53D900F97AB6 /* Login */,
 			);
@@ -425,6 +439,7 @@
 				F0ACE8BB29CE1D3800F97AB6 /* String + Extension.swift in Sources */,
 				F0ACE8B629CE172B00F97AB6 /* Method.swift in Sources */,
 				F0ACE8C029CE518D00F97AB6 /* Token.swift in Sources */,
+				F0853C2829D091DC00F3364A /* NotificationCenter + Extension.swift in Sources */,
 				F0ACE8C429CE57E300F97AB6 /* LoginViewModel.swift in Sources */,
 				F0C7D84129CE784400ABB1F9 /* APIManager.swift in Sources */,
 				F036CC0C29CF317C00282206 /* MainViewModel.swift in Sources */,
@@ -435,6 +450,7 @@
 				F036CC1229CF35D000282206 /* TableViewCell + Extension.swift in Sources */,
 				F0ACE8BE29CE200000F97AB6 /* AuthResponse.swift in Sources */,
 				F036CC0A29CF24E000282206 /* WebService.swift in Sources */,
+				F0853C2629D088A600F3364A /* QRViewController.swift in Sources */,
 				F036CC1629CF40B800282206 /* UserDefaults + Extension.swift in Sources */,
 				F0ACE8B829CE174000F97AB6 /* Constants.swift in Sources */,
 			);
@@ -534,7 +550,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -588,7 +604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

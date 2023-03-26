@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainViewInterface:AnyObject {
     func configureTableView()
+    func configureNavigationBar()
     func setupUI()
     func getData()
     func reloadData()
@@ -26,15 +27,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         viewModel.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetQR), name: .QRName, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-
-
     
+    @objc func didGetQR(_ QRCode:Notification){
+        guard let name = QRCode.object as? String else { return}
+        searchController.searchBar.text = name
+    }
 }
 
 extension MainViewController: MainViewInterface {
@@ -51,7 +56,7 @@ extension MainViewController: MainViewInterface {
     func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 100
+        tableView.rowHeight = 120
         tableView.refreshControl = refreshControl
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
     }
@@ -76,10 +81,20 @@ extension MainViewController: MainViewInterface {
     }
     
     func configureSearchBar() {
-        tableView.tableHeaderView = searchController.searchBar
+        navigationItem.titleView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
 
+    }
+    
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "qrcode.viewfinder"), style: .plain, target: self, action: #selector(QRButtonTapped))
+    }
+    
+    @objc func QRButtonTapped(){
+        let viewController = QRViewController()
+        viewController.modalPresentationStyle = .formSheet
+        present(viewController, animated: true)
     }
     
 }

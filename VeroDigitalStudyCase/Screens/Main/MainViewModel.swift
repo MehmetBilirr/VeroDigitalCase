@@ -41,6 +41,7 @@ extension MainViewModel:MainViewModelInterface {
         view?.getData()
         view?.configureRefreshControl()
         view?.configureSearchBar()
+        view?.configureNavigationBar()
     }
     
     func getData() {
@@ -88,11 +89,13 @@ extension MainViewModel:MainViewModelInterface {
                 let task = task.task.lowercased().contains(text)
                 let description = task.description.lowercased().contains(text)
                 
-                view?.reloadData()
-                return title || task || description
+                
+                return title || task || description ?? false
             }else {
                 return false
             }
+            
         })
+        view?.reloadData()
     }
 }

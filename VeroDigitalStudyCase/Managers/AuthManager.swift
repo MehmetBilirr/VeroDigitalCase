@@ -15,7 +15,6 @@ protocol AuthManagerInterface {
 final class AuthManager:AuthManagerInterface {
     
     static let shared = AuthManager()
-    let webService = WebService()
     init() {}
     private var refreshingToken = false
     var isSignedIn:Bool {
@@ -45,7 +44,7 @@ final class AuthManager:AuthManagerInterface {
     
     func login(parameters:[String:Any],completion:@escaping(Result<AuthResponse,Error>)->Void){
         
-        webService.request(route: .login, method: .post, parameters: parameters, completion: completion)    
+        WebService.shared.request(route: .login, method: .post, parameters: parameters, completion: completion)    
         
     }
     

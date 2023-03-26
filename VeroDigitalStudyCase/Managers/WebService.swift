@@ -8,8 +8,10 @@
 import Foundation
 
 
-struct WebService {
+class WebService {
     
+    static let shared = WebService()
+    init() {}
 
     func request<T:Codable>(route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
         
@@ -38,7 +40,7 @@ struct WebService {
             DispatchQueue.main.async {
                 
                 // TODO decode our result and send back to the user
-                handleResponse(result: result, completion: completion)
+                self.handleResponse(result: result, completion: completion)
                 
             }
         }.resume()
