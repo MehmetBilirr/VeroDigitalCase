@@ -21,7 +21,40 @@ enum Route {
         return "/dev/index.php/v1/tasks/select"
         
     }
-
   }
+    
+    var method:Method {
+        switch self {
+        case .login:
+            return .post
+        case .getData:
+            return .get
+        }
+    }
+    
+    var urlString:String {
+        switch self {
+        case .login:
+            return Route.baseUrl + self.description
+        case .getData:
+            return Route.baseUrl + self.description
+        }
+    }
 
+    
+    var headers:[String:String] {
+        switch self {
+        case .login:
+            return [
+                "Authorization": "Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
+                "Content-Type": "application/json"
+              ]
+        case .getData:
+            guard let accessToken = UserDefaults.standard.string(forKey: "access_token") else {return ["":""]}
+            return [
+                "Authorization": "Bearer \(accessToken)",
+                "Content-Type": "application/json"
+              ]
+        }
+    }
 }

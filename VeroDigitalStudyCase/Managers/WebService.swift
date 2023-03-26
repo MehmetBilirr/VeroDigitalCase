@@ -10,10 +10,10 @@ import Foundation
 
 struct WebService {
     
-    static let shared = WebService()
-    init(){}
-    
-    func request<T:Codable>(request:URLRequest,route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
+
+    func request<T:Codable>(route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
+        
+        guard let request = createRequest(route: route, method: method, parameters: parameters) else {return}
         
         URLSession.shared.dataTask(with: request) { data, response, error in
                             
@@ -38,7 +38,7 @@ struct WebService {
             DispatchQueue.main.async {
                 
                 // TODO decode our result and send back to the user
-                self.handleResponse(result: result, completion: completion)
+                handleResponse(result: result, completion: completion)
                 
             }
         }.resume()
@@ -66,5 +66,28 @@ struct WebService {
           completion(.failure(error))
         }
 
+    }
+    
+    private func createRequest (route: Route, method: Method, parameters:[String:Any]?) -> URLRequest? {
+        
+        let urlString = route.urlString
+        guard let url = urlString.asURL else {return nil}
+        var urlRequest = URLRequest(url: url)
+
+        urlRequest.httpMethod = route.method.rawValue
+        urlRequest.allHTTPHeaderFields = route.headers
+        if let params = parameters {
+            
+            switch method {
+            case .post,.delete,.patch:
+                let bodyData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+                
+                urlRequest.httpBody = bodyData
+                
+            default:
+                break
+            }
+        }
+        return urlRequest
     }
 }

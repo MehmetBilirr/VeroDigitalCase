@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ProgressHUD
 
 protocol LoginViewModelInterface:AnyObject {
     var view:LoginViewInterface?{get set}
@@ -43,7 +44,7 @@ extension LoginViewModel:LoginViewModelInterface {
                 self.authManager?.saveToken(result: authResponse)
                 self.view?.pushToMainVC()
             case .failure(let error):
-                print(error.localizedDescription)
+                ProgressHUD.showFailed(error.localizedDescription)
             }
         })
         

@@ -14,12 +14,14 @@ protocol MainViewModelInterface:AnyObject {
     func getData()
     func numberOfRowsInSection()->Int
     func cellForRowAt(indexPath:IndexPath) -> TaskResponse
+    func filteredTasks(text:String)
 }
 
 
 class MainViewModel {
     weak var view:MainViewInterface?
-    var tasks:[TaskResponse]?
+    var tasks = [TaskResponse]()
+    var filteredTasks = [TaskResponse]()
     private let apiManager : APIManager?
     
     init(view:MainViewInterface,apiManager:APIManager=APIManager.shared) {
@@ -38,6 +40,7 @@ extension MainViewModel:MainViewModelInterface {
         view?.configureTableView()
         view?.getData()
         view?.configureRefreshControl()
+        view?.configureSearchBar()
     }
     
     func getData() {
@@ -55,11 +58,41 @@ extension MainViewModel:MainViewModelInterface {
     }
     
     func numberOfRowsInSection() -> Int {
-        UserDefaults.standard.getCacheModels()?.count ?? 0
+        if view?.isSearching ?? false {
+            return filteredTasks.count
+        }else {
+            return UserDefaults.standard.getCacheModels()?.count ?? 0
+        }
+        
+        
     }
     
     func cellForRowAt(indexPath: IndexPath) -> TaskResponse {
         guard let tasks = UserDefaults.standard.getCacheModels() else {return .init(task: "", title: "", description: "", colorCode: "")}
-        return tasks[indexPath.row]
+        
+        if view?.isSearching ?? false{
+            return filteredTasks[indexPath.row]
+        }else {
+            return tasks[indexPath.row]
+        }
+
+    }
+    
+    func filteredTasks(text: String) {
+        guard let tasks = UserDefaults.standard.getCacheModels() else {return}
+        filteredTasks = tasks.filter({ task in
+            
+            if text != "" {
+                
+                let title =  task.title.lowercased().contains(text)
+                let task = task.task.lowercased().contains(text)
+                let description = task.description.lowercased().contains(text)
+                
+                view?.reloadData()
+                return title || task || description
+            }else {
+                return false
+            }
+        })
     }
 }

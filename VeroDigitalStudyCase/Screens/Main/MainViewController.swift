@@ -13,12 +13,15 @@ protocol MainViewInterface:AnyObject {
     func getData()
     func reloadData()
     func configureRefreshControl()
+    func configureSearchBar()
+    var isSearching: Bool {get}
 }
 
 class MainViewController: UIViewController {
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private lazy var viewModel = MainViewModel(view: self)
+    private let searchController = UISearchController()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +39,9 @@ class MainViewController: UIViewController {
 
 extension MainViewController: MainViewInterface {
     
+    var isSearching: Bool {
+        searchController.isActive
+    }
     
     func setupUI() {
         view.backgroundColor = .systemBackground
@@ -69,6 +75,13 @@ extension MainViewController: MainViewInterface {
         refreshControl.endRefreshing()
     }
     
+    func configureSearchBar() {
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+
+    }
+    
 }
 
 extension MainViewController:UITableViewDelegate,UITableViewDataSource {
@@ -82,5 +95,20 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
+    
+}
+
+extension MainViewController:UISearchResultsUpdating,UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        guard let text = searchController.searchBar.text else {return}
+        
+        let lowerText = text.lowercased()
+        viewModel.filteredTasks(text: lowerText)
+        
+        
+        
+    }
+
     
 }
