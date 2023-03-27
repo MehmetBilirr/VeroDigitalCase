@@ -9,10 +9,6 @@ import Foundation
 
 struct AuthResponse: Codable {
     let oauth: Oauth
-    let userInfo: UserInfo
-    let permissions: [String]
-    let apiVersion: String
-    let showPasswordPrompt: Bool
 }
 
 // MARK: - Oauth
@@ -30,10 +26,3 @@ struct Oauth: Codable {
     }
 }
 
-// MARK: - UserInfo
-struct UserInfo: Codable {
-    let personalNo: Int
-    let firstName, lastName, displayName: String
-    let active: Bool
-    let businessUnit: String
-}

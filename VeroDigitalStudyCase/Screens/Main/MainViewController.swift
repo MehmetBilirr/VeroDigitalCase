@@ -15,10 +15,11 @@ protocol MainViewInterface:AnyObject {
     func reloadData()
     func configureRefreshControl()
     func configureSearchBar()
+    func addObserverQR()
     var isSearching: Bool {get}
 }
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private lazy var viewModel = MainViewModel(view: self)
@@ -27,8 +28,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         viewModel.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(didGetQR), name: .QRName, object: nil)
+    
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,10 +36,6 @@ class MainViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
-    @objc func didGetQR(_ QRCode:Notification){
-        guard let name = QRCode.object as? String else { return}
-        searchController.searchBar.text = name
-    }
 }
 
 extension MainViewController: MainViewInterface {
@@ -84,6 +80,7 @@ extension MainViewController: MainViewInterface {
         navigationItem.titleView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
 
     }
     
@@ -96,7 +93,16 @@ extension MainViewController: MainViewInterface {
         viewController.modalPresentationStyle = .formSheet
         present(viewController, animated: true)
     }
+    func addObserverQR() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetQR), name: .QRName, object: nil)
+    }
     
+    @objc func didGetQR(_ QRCode:Notification){
+        guard let name = QRCode.object as? String else { return}
+        viewModel.filteredTasks(text: name.lowercased())
+        searchController.searchBar.text = name
+
+    }
 }
 
 extension MainViewController:UITableViewDelegate,UITableViewDataSource {
@@ -115,12 +121,10 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource {
 
 extension MainViewController:UISearchResultsUpdating,UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        
-        guard let text = searchController.searchBar.text else {return}
-        
+        guard let text = searchController.searchBar.text, text != "" else {return}
         let lowerText = text.lowercased()
         viewModel.filteredTasks(text: lowerText)
-        
+
         
         
     }

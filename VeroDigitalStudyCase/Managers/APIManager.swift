@@ -16,10 +16,7 @@ class APIManager:APIManagerInterface {
     static let shared = APIManager()
     init(){}
     
-    
     func getData(completion:@escaping(Result<[TaskResponse],Error>) -> Void){
-        WebService.shared.request(route: .getData, method: .get, parameters: nil, completion: completion)
-        
+        WebService.shared.request(route: .getData, parameters: nil, completion: completion)
     }
-    
 }

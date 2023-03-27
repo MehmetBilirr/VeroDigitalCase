@@ -13,10 +13,12 @@ protocol LoginViewInterface:AnyObject {
     func styleUI()
     func layoutUI()
     func pushToMainVC()
+    func addOberserverKeyboard()
+    func didTapLogInButton()
     
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     private lazy var viewModel = LoginViewModel(view: self)
     private let  userNameLbl = UILabel()
     private let userNameTxtFld = UITextField()
@@ -29,16 +31,13 @@ class LoginViewController: UIViewController {
         
         viewModel.viewDidLoad()
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
        
     }
  
-    
     @objc func didTapLogInButton(){
         guard let userName = userNameTxtFld.text , let password = passwordTxtFld.text else { return}
         viewModel.login(userName: userName, password: password)
     }
-
 
 }
 
@@ -111,10 +110,14 @@ extension LoginViewController:LoginViewInterface {
     }
     
     func pushToMainVC() {
-        let viewController = MainViewController()
+        let viewController = UINavigationController(rootViewController: MainViewController())
         viewController.modalPresentationStyle = .fullScreen
-        present(MainViewController(), animated: true)
+        present(viewController, animated: true)
         
+    }
+    
+    func addOberserverKeyboard() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
     }
     
     @objc func didTapToDismiss(){

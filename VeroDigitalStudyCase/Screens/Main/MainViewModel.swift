@@ -18,13 +18,16 @@ protocol MainViewModelInterface:AnyObject {
 }
 
 
-class MainViewModel {
+final class MainViewModel {
     weak var view:MainViewInterface?
-    var tasks = [TaskResponse]()
+    var tasks : [TaskResponse]  = {
+        guard let tasks = UserDefaults.standard.getCacheModels() else {return []}
+        return tasks
+    }()
     var filteredTasks = [TaskResponse]()
-    private let apiManager : APIManager?
+    private let apiManager : APIManagerInterface?
     
-    init(view:MainViewInterface,apiManager:APIManager=APIManager.shared) {
+    init(view:MainViewInterface,apiManager:APIManagerInterface=APIManager.shared) {
         self.view = view
         self.apiManager = apiManager
     }
@@ -32,8 +35,6 @@ class MainViewModel {
 
 
 extension MainViewModel:MainViewModelInterface {
-
-    
     
     func viewDidLoad() {
         view?.setupUI()
@@ -42,14 +43,13 @@ extension MainViewModel:MainViewModelInterface {
         view?.configureRefreshControl()
         view?.configureSearchBar()
         view?.configureNavigationBar()
+        view?.addObserverQR()
     }
     
     func getData() {
-        
         apiManager?.getData(completion: { result in
             switch result {
             case .success(let tasks):
-                self.tasks = tasks
                 UserDefaults.standard.saveModeltoCache(tasks)
                 self.view?.reloadData()
             case .failure(let error):
@@ -59,19 +59,19 @@ extension MainViewModel:MainViewModelInterface {
     }
     
     func numberOfRowsInSection() -> Int {
-        if view?.isSearching ?? false {
+        
+        if view?.isSearching == true {
             return filteredTasks.count
         }else {
-            return UserDefaults.standard.getCacheModels()?.count ?? 0
+            return tasks.count
         }
         
         
     }
     
     func cellForRowAt(indexPath: IndexPath) -> TaskResponse {
-        guard let tasks = UserDefaults.standard.getCacheModels() else {return .init(task: "", title: "", description: "", colorCode: "")}
         
-        if view?.isSearching ?? false{
+        if view?.isSearching == true {
             return filteredTasks[indexPath.row]
         }else {
             return tasks[indexPath.row]
@@ -80,20 +80,14 @@ extension MainViewModel:MainViewModelInterface {
     }
     
     func filteredTasks(text: String) {
-        guard let tasks = UserDefaults.standard.getCacheModels() else {return}
         filteredTasks = tasks.filter({ task in
             
-            if text != "" {
-                
+     
                 let title =  task.title.lowercased().contains(text)
                 let task = task.task.lowercased().contains(text)
                 let description = task.description.lowercased().contains(text)
-                
-                
-                return title || task || description ?? false
-            }else {
-                return false
-            }
+
+                return title || task || description
             
         })
         view?.reloadData()

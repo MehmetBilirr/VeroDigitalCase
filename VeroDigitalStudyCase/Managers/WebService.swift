@@ -8,14 +8,14 @@
 import Foundation
 
 
-class WebService {
+final class WebService {
     
     static let shared = WebService()
     init() {}
 
-    func request<T:Codable>(route:Route,method:Method,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
+    func request<T:Codable>(route:Route,parameters:[String:Any]?, completion: @escaping(Result<T,Error>) -> Void ) {
         
-        guard let request = createRequest(route: route, method: method, parameters: parameters) else {return}
+        guard let request = createRequest(route: route, parameters: parameters) else {return}
         
         URLSession.shared.dataTask(with: request) { data, response, error in
                             
@@ -49,7 +49,6 @@ class WebService {
     
     private func handleResponse<T:Codable>(result:Result<Data,Error>?,completion: (Result<T,Error>) -> Void){
         
-        
         guard let result = result else {
           completion(.failure(AppError.unknownError))
             return}
@@ -70,7 +69,7 @@ class WebService {
 
     }
     
-    private func createRequest (route: Route, method: Method, parameters:[String:Any]?) -> URLRequest? {
+    private func createRequest (route: Route,parameters:[String:Any]?) -> URLRequest? {
         
         let urlString = route.urlString
         guard let url = urlString.asURL else {return nil}
@@ -80,7 +79,7 @@ class WebService {
         urlRequest.allHTTPHeaderFields = route.headers
         if let params = parameters {
             
-            switch method {
+            switch route.method {
             case .post,.delete,.patch:
                 let bodyData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
                 

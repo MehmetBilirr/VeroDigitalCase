@@ -9,9 +9,21 @@ import Foundation
 
 struct Constants {
 
- static  let parameters = [
-    "username": "365",
-    "password": "1"
-  ] as [String : Any]
+    static  let authParameters : [String : String] = [
+    "Authorization": "Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
+    "Content-Type": "application/json"
+  ]
+    
+    
+    static  var taskParameters : [String : String]  {
+        
+        guard let accessToken = UserDefaults.standard.string(forKey: "access_token") else {return ["":""]}
+        return [
+            "Authorization": "Bearer \(accessToken)",
+            "Content-Type": "application/json"
+          ]
+    }
+    
+    
 
 }

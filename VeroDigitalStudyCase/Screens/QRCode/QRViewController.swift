@@ -4,99 +4,91 @@
 //
 //  Created by Mehmet Bilir on 26.03.2023.
 //
-
 import UIKit
 import AVFoundation
+import ProgressHUD
 
-class QRViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate{
-        var captureSession: AVCaptureSession!
-        var previewLayer: AVCaptureVideoPreviewLayer!
-        
+protocol QRViewInterface:AnyObject {
+    func configurePreviewLayer()
+    func handleInput()
+    func handleOutput()
+}
+
+final class QRViewController: UIViewController{
+    private var captureSession =  AVCaptureSession()
+    private lazy var viewModel = QRViewModel(view: self)
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            if (captureSession?.isRunning == false) {
-                DispatchQueue.main.sync { [self] in
-                    captureSession.startRunning()
-                }
-            }
-            
-            view.backgroundColor = UIColor.black
-            captureSession = AVCaptureSession()
-            
-            guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-            let videoInput: AVCaptureDeviceInput
-            
-            do {
-                videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
-            } catch {
-                return
-            }
-            
-            if (captureSession.canAddInput(videoInput)) {
-                captureSession.addInput(videoInput)
-            } else {
-                failed()
-                return
-            }
-            
-            let metadataOutput = AVCaptureMetadataOutput()
-            
-            if (captureSession.canAddOutput(metadataOutput)) {
-                captureSession.addOutput(metadataOutput)
-                
-                metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                metadataOutput.metadataObjectTypes = [.qr]
-            } else {
-                failed()
-                return
-            }
-            
-            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            previewLayer.frame = view.layer.bounds
-            previewLayer.videoGravity = .resizeAspectFill
-            view.layer.addSublayer(previewLayer)
-            
-            captureSession.startRunning()
+
+            viewModel.viewDidLoad()
         }
+    }
+
+extension QRViewController:QRViewInterface {
+    
+    func handleInput() {
         
-        private func failed() {
-            
-//            makeAlert(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", buttonText: "OK")
-            captureSession = nil
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let videoInput = try? AVCaptureDeviceInput(device: videoCaptureDevice) else {return}
+        
+        if captureSession.canAddInput(videoInput){
+            captureSession.addInput(videoInput)
+        } else {
+            failedScan()
         }
+    
+    }
+    
+    func handleOutput() {
         
-        
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            
-            if (captureSession?.isRunning == true) {
-                captureSession.stopRunning()
-            }
+        let metadataOutput = AVCaptureMetadataOutput()
+        if captureSession.canAddOutput(metadataOutput){
+            captureSession.addOutput(metadataOutput)
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
+        } else {
+            failedScan()
         }
-        
-        func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    }
+    
+    func configurePreviewLayer() {
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.layer.bounds
+        previewLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer)
+        captureSession.startRunning()
+    }
+    
+    private func failedScan() {
+        ProgressHUD.showFailed("Scanning not supported")
+        captureSession.stopRunning()
+    }
+}
+
+
+extension QRViewController:AVCaptureMetadataOutputObjectsDelegate {
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            guard let stringValue = readableObject.stringValue else { return }
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            found(text: stringValue)
             captureSession.stopRunning()
-            
-            if let metadataObject = metadataObjects.first {
-                guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-                guard let stringValue = readableObject.stringValue else { return }
-                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                found(text: stringValue)
-            }
-            
             dismiss(animated: true)
         }
         
-        private func found(text: String) {
-            NotificationCenter.default.post(name: .QRName, object: text)
-        }
-        
-        override var prefersStatusBarHidden: Bool {
-            return true
-        }
-        
-        override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-            return .portrait
-        }
     }
+    
+    private func found(text: String) {
+        NotificationCenter.default.post(name: .QRName, object: text)
+    }
+}

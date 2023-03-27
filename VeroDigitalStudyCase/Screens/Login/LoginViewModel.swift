@@ -14,29 +14,28 @@ protocol LoginViewModelInterface:AnyObject {
     func login(userName:String,password:String)
 }
 
-
-class LoginViewModel {
+final class LoginViewModel {
     weak var view:LoginViewInterface?
-    private let authManager : AuthManager?
+    private let authManager : AuthManagerInterface?
     
-    init(view:LoginViewInterface,authManager:AuthManager=AuthManager.shared) {
+    init(view:LoginViewInterface,authManager:AuthManagerInterface=AuthManager.shared) {
         self.view = view
         self.authManager = authManager
     }
 }
-
 
 extension LoginViewModel:LoginViewModelInterface {
     
     func viewDidLoad() {
         view?.layoutUI()
         view?.styleUI()
+        view?.addOberserverKeyboard()
         
     }
     
     func login(userName: String, password: String) {
         
-        let parameters = ["username": userName,"password": password] as [String : Any]
+        let parameters = ["username": userName,"password": password] as [String : String]
         
         authManager?.login(parameters: parameters, completion: { result in
             switch result {

@@ -24,37 +24,42 @@ class MainTableViewCell: UITableViewCell {
     private func styleUI(){
         
         taskLbl.configureStyle(size: 12, weight: .regular, color: .black)
-        taskLbl.text = "asdasdasd"
+
         titleLbl.configureStyle(size: 20, weight: .bold, color: .black)
-        titleLbl.text = "adsasdasd"
-        descriptionLbl.configureStyle(size: 12, weight: .thin, color: .black)
-        descriptionLbl.text = "asdadasd"
+
+        descriptionLbl.configureStyle(size: 12, weight: .regular, color: .black)
+        descriptionLbl.numberOfLines = 2
+
         
     }
     
     private func layoutUI(){
-        contentView.addSubview(titleLbl)
-        
-        titleLbl.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-10)
-            make.top.equalToSuperview().offset(5)
-        }
         
         contentView.addSubview(taskLbl)
         
         taskLbl.snp.makeConstraints { make in
-            make.left.equalTo(titleLbl.snp.left)
-            make.top.equalTo(titleLbl.snp.bottom).offset(5)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview()
+        }
+        
+        contentView.addSubview(titleLbl)
+        
+        titleLbl.snp.makeConstraints { make in
+            make.left.equalTo(taskLbl.snp.left)
+            make.right.equalToSuperview()
+            make.bottom.equalTo(taskLbl.snp.top).offset(-10)
         }
         
         contentView.addSubview(descriptionLbl)
         
         descriptionLbl.snp.makeConstraints { make in
-            make.left.equalTo(titleLbl.snp.left)
-            make.top.equalTo(taskLbl.snp.bottom).offset(5)
-          
+            make.left.equalTo(taskLbl.snp.left)
+            make.right.equalToSuperview()
+            make.top.equalTo(taskLbl.snp.bottom).offset(10)
+            
         }
+    
     }
     
     func setup(task:TaskResponse){

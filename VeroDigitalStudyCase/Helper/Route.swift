@@ -45,16 +45,9 @@ enum Route {
     var headers:[String:String] {
         switch self {
         case .login:
-            return [
-                "Authorization": "Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
-                "Content-Type": "application/json"
-              ]
+            return Constants.authParameters
         case .getData:
-            guard let accessToken = UserDefaults.standard.string(forKey: "access_token") else {return ["":""]}
-            return [
-                "Authorization": "Bearer \(accessToken)",
-                "Content-Type": "application/json"
-              ]
+            return Constants.taskParameters
         }
     }
 }

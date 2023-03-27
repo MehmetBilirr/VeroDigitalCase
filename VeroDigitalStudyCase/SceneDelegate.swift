@@ -21,11 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if AuthManager.shared.isSignedIn {
             let navVC = UINavigationController(rootViewController: MainViewController())
             window.rootViewController = navVC
-          
         }else {
             window.rootViewController =  LoginViewController()
         }
-
         window.makeKeyAndVisible()
         self.window = window
     }

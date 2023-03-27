@@ -28,7 +28,25 @@
 		<key>VeroDigitalStudyCase.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F0ACE87029CE103500F97AB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0ACE88629CE103600F97AB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0ACE89029CE103600F97AB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
