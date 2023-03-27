@@ -1,9 +1,19 @@
-Hello dear iOS dev prospect!
 
-This repository is supposed to act as a playground for your submission.
-Before getting started, please make sure to use this repository as a template on which you will commit and push your code regularly. Once you are ready, please mail us back the link to your repository. 
+# Technology and Structures
+* MVVM Pattern
+* UIKIT (Programmatically)
+* URL Session
+* REST API
+* AVFoundation
+* Core Data
+* Navigation
+* Search Controller
+* TableView
+* Unit Test
 
-Below, you will find the **Task** definition. Happy Hacking :computer: and Good Luck :shamrock:
+**External Dependencies:**  
+* Snapkit
+* ProgressHUD
 
 # Task
 
