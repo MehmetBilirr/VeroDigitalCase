@@ -1,3 +1,10 @@
+# App Recording
+
+
+https://user-images.githubusercontent.com/101524266/228235384-c6f28844-400d-41bc-9ec0-5f2f1ae32536.mp4
+
+
+
 
 # Technology and Structures
 * MVVM Pattern
